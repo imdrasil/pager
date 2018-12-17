@@ -8,6 +8,10 @@ module Pager
       start_index = Math.max(current_page * per_page, 0)
       @collection = array[start_index...end_index]
     end
+
+    def self.empty(per_page = Pager.per_page)
+      new([] of T, 0, per_page)
+    end
   end
 end
 

@@ -7,9 +7,13 @@ module Pager
 
     getter collection : Array(T)
 
-    def initialize(query : QueryBuilder::ModelQuery(T), current_page, per_page)
+    def initialize(query : Jennifer::QueryBuilder::ModelQuery(T), current_page, per_page)
       @collection = query.to_a
       super(current_page, per_page, query.clone.rearrange.reorder.count)
+    end
+
+    def self.empty(per_page = Pager.per_page)
+      new(T.all.none, 0, per_page)
     end
   end
 end
