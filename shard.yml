@@ -1,0 +1,17 @@
+name: pager
+version: 0.1.0
+
+authors:
+  - Roman Kalnytskyi <moranibaca@gmail.com>
+
+crystal: 0.27.0
+
+license: MIT
+
+dependencies:
+  i18n:
+    github: TechMagister/i18n.cr
+
+development_dependencies:
+  jennifer:
+    github: imdrasil/jennifer.cr
