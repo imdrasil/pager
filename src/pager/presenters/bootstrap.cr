@@ -26,7 +26,8 @@ module Pager
       io << %(<a class="page-link" href=")
       io << build_page_path(collection.current_page - 1, collection.first?)
       io << %(" aria-label="Previous">)
-      io << %(<span class="sr-only">)
+      io << %(<span class="sr-only">Previous</span>)
+      io << %(<span aria-hidden="true">)
       io << previous_label
       io << %(</span>)
       io << %(</a>)
@@ -37,8 +38,9 @@ module Pager
       io << %(<li class="page-item #{DISABLED_CLASS if collection.last?}">)
       io << %(<a class="page-link" href=")
       io << build_page_path(collection.current_page + 1, collection.last?)
-      io << %(" aria-label="Previous">)
-      io << %(<span class="sr-only">)
+      io << %(" aria-label="Next">)
+      io << %(<span class="sr-only">Next</span>)
+      io << %(<span aria-hidden="true">)
       io << next_label
       io << %(</span>)
       io << %(</a>)

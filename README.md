@@ -13,6 +13,8 @@ dependencies:
 
 2. Run `shards install`
 
+Also if you use default bootstrap presenter ensure that you've added appropriate css to your project from the CDN or directly in the code.
+
 ## Usage
 
 Pager provides two basic container: for `Array` and `Jennifer::QueryBuilder::ModelQuery`. Also it includes basic bootstrap presenter, which is the default presenter.
@@ -72,7 +74,8 @@ Will generate next html:
   <ul class='pagination'>
     <li class="page-item ">
       <a class="page-link" href="/?page=0" aria-label="Previous">
-        <span class="sr-only">&#8592; Previous</span>
+        <span class="sr-only">Previous</span>
+        <span aria-hidden="true">&lsaquo; Previous</span>
       </a>
     </li>
     <li class='page-item '>
@@ -85,8 +88,9 @@ Will generate next html:
       <a class='page-link' href='/?page=2'>3</a>
     </li>
     <li class="page-item ">
-      <a class="page-link" href="/?page=2" aria-label="Previous">
-        <span class="sr-only">Next &#8594;</span>
+      <a class="page-link" href="/?page=2" aria-label="Next">
+        <span class="sr-only">Next</span>
+        <span aria-hidden="true">Next &rsaquo;</span>
       </a>
     </li>
   </ul>
@@ -101,8 +105,8 @@ The default labels for the "next" and "previous" texts are stored in the i18n ya
 
 ```yaml
 pager:
-  previous_label: "&#8592; Previous"
-  next_label: "Next &#8594;"
+  previous_label: "&lsaquo; Previous"
+  next_label: "Next &rsaquo;"
 ```
 
 For the translation purpose `TechMagister/i18n.cr` library is used.

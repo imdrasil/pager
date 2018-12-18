@@ -35,13 +35,13 @@ describe Pager::Presenter do
 
   describe "#previous_label" do
     it do
-      DummyPresenter.new(array_collection(21), "/", 3).previous_label.should eq("&#8592; Previous")
+      DummyPresenter.new(array_collection(21), "/", 3).previous_label.should eq("&lsaquo; Previous")
     end
   end
 
   describe "#next_label" do
     it do
-      DummyPresenter.new(array_collection(21), "/", 3).next_label.should eq("Next &#8594;")
+      DummyPresenter.new(array_collection(21), "/", 3).next_label.should eq("Next &rsaquo;")
     end
   end
 end
