@@ -115,11 +115,11 @@ For the translation purpose `TechMagister/i18n.cr` library is used.
 
 ### Presenter
 
-TBA. Take a look at existing (bootstrap)[./src/pager/presenters/bootstrap.cr] presenter implementation.
+TBA. Take a look at existing [bootstrap](./src/pager/presenters/bootstrap.cr) presenter implementation.
 
 ### Collection
 
-TBA. Take a look at existing (array)[./src/pager/collections/array.cr] presenter implementation.
+TBA. Take a look at existing [array](./src/pager/collections/array.cr) presenter implementation.
 
 ## Contributing
 
