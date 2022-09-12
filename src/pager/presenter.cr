@@ -41,7 +41,7 @@ module Pager
     end
 
     private def half_visible_pages
-      pages / 2
+      pages // 2
     end
 
     private def build_page_path(page : Int32, skip : Bool)

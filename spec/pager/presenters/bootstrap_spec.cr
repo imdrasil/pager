@@ -2,7 +2,7 @@ require "../../spec_helper"
 
 describe Pager::Bootstrap do
   described_class = Pager::Bootstrap
-  empty_collection = Pager::Collection.empty()
+  empty_collection = Pager::Collection.empty
   path = "/"
 
   describe "#render" do

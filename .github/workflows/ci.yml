@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  pull_request:
+    branches: "*"
+  push:
+    branches: master
+
+jobs:
+  test:
+    fail-fast: false
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Crystal
+        uses: oprypin/install-crystal@v1
+        with:
+          crystal: ${{matrix.crystal_version}}
+
+      - name: Donwload sources
+        uses: actions/checkout@v2
+
+      - name: Check formatting
+        if: ${{ matrix.linter }}
+        run: crystal tool format --check
+
+      - name: Install dependencies
+        run: shards install
+
+      - name: Run specs
+        run: crystal spec --error-trace
