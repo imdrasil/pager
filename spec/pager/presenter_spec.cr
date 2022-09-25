@@ -12,7 +12,7 @@ describe Pager::Presenter do
       it do
         indexes = [] of Int32
         DummyPresenter.new(array_collection(25), "/", 3).each_page { |index| indexes << index }
-        indexes.should eq([0, 1, 2])
+        indexes.should eq([1, 2, 3])
       end
     end
 
@@ -20,7 +20,7 @@ describe Pager::Presenter do
       it do
         indexes = [] of Int32
         DummyPresenter.new(array_collection(25, 3), "/", 3).each_page { |index| indexes << index }
-        indexes.should eq([1, 2, 3])
+        indexes.should eq([2, 3, 4])
       end
     end
 

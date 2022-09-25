@@ -1,12 +1,11 @@
 module Pager
   abstract class Collection
-    # include Enumerable(T)
-
     getter current_page : Int32, per_page : Int32, total_size : Int32
 
     def initialize(@current_page, @per_page, @total_size)
       raise ArgumentError.new if @per_page < 1
-      raise ArgumentError.new if @current_page < 0
+
+      @current_page = 1 if @current_page < 1
     end
 
     abstract def collection
@@ -19,24 +18,40 @@ module Pager
       collection.each { |item| yield item }
     end
 
-    def any?
-      collection.any?
+    def map
+      collection.map { |item| yield item }
     end
 
-    def pages
+    def to_a
+      collection
+    end
+
+    def any? : Bool
+      collection.any? # ameba:disable Performance/AnyInsteadOfEmpty
+    end
+
+    def any? : Bool
+      collection.any? { |item| yield item }
+    end
+
+    def empty? : Bool
+      collection.empty?
+    end
+
+    def pages : Int32
       (total_size / per_page.to_f).ceil.to_i
     end
 
-    def last?
-      current_page + 1 == pages || pages == 0
+    def last? : Bool
+      current_page == pages || pages == 0
     end
 
-    def first?
-      current_page == 0
+    def first? : Bool
+      current_page == 1
     end
 
     def self.empty(per_page = Pager.per_page)
-      EmptyCollection.new(0, per_page, 0)
+      EmptyCollection.new(1, per_page, 0)
     end
   end
 

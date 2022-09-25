@@ -16,3 +16,14 @@ development_dependencies:
   jennifer:
     github: imdrasil/jennifer.cr
     version: ">= 0.12.0"
+  ameba:
+    github: crystal-ameba/ameba
+    version: "= 1.0.0"
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
+    version: "0.18.0"
+  jennifer_sqlite3_adapter:
+    github: imdrasil/jennifer_sqlite3_adapter
+    version: "~> 0.4.0"
+  sam:
+    github: imdrasil/sam.cr

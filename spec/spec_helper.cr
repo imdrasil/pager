@@ -1,15 +1,21 @@
 require "spec"
+require "./jennifer_config"
+require "./support/models"
 
 require "../src/pager"
 require "../src/pager/presenters/bootstrap"
 require "../src/pager/collections/array"
 require "../src/pager/collections/jennifer"
 
-def array_collection(count, current = 0, per_page = 8)
+def setup_records(count)
+  count.times.map { |i| User.create!({name: "name #{i}"}) }.to_a
+end
+
+def array_collection(count, current = 1, per_page = 8)
   Pager::ArrayCollection.new((1..count).to_a, current, per_page)
 end
 
-def array_presenter(count, current = 0, per_page = 8, path = "/", visible = Pager.visible_pages)
+def array_presenter(count, current = 1, per_page = 8, path = "/", visible = Pager.visible_pages)
   Pager::Bootstrap.new(array_collection(count, current, per_page), path, visible)
 end
 
@@ -47,3 +53,11 @@ module Spec
 end
 
 I18n.init
+
+Spec.before_each do
+  Jennifer::Adapter.default_adapter.begin_transaction
+end
+
+Spec.after_each do
+  Jennifer::Adapter.default_adapter.rollback_transaction
+end
