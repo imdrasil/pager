@@ -17,7 +17,7 @@ module Pager
     private def visible_pages(io)
       each_page do |index|
         disabled = index == collection.current_page
-        page_item(io, index + 1, build_page_path(index, disabled), disabled)
+        page_item(io, index, build_page_path(index, disabled), disabled)
       end
     end
 

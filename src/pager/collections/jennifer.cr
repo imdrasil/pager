@@ -13,7 +13,7 @@ module Pager
     end
 
     def self.empty(per_page = Pager.per_page)
-      new(T.all.none, 0, per_page)
+      new(T.all.none, 1, per_page)
     end
   end
 end

@@ -28,14 +28,12 @@ module Pager
       left_index = collection.current_page - half_visible_pages
       right_index = collection.current_page + half_visible_pages
 
-      if left_index < 0
-        right_index = Math.min(collection.pages - 1, right_index - left_index)
-        left_index = 0
-      end
-
-      if right_index >= collection.pages
-        left_index = Math.max(0, left_index - (right_index - collection.pages + 1))
-        right_index = collection.pages - 1
+      if left_index < 1
+        right_index = Math.min(collection.pages, right_index - left_index + 1)
+        left_index = 1
+      elsif right_index > collection.pages
+        left_index = Math.max(1, left_index - (right_index - collection.pages))
+        right_index = collection.pages
       end
       {left: left_index, right: right_index}
     end

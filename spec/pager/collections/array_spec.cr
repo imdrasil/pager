@@ -14,15 +14,15 @@ describe Pager::ArrayCollection do
 
   describe "#collection" do
     it do
-      collection = described_class.new([1, 2, 3, 4, 5], 1, 2)
+      collection = array_collection(5, 2, 2)
       collection.collection.should eq([3, 4])
     end
   end
 
   describe "#size" do
     it do
-      array_collection(21, 0, 8).size.should eq(8)
-      array_collection(21, 2, 8).size.should eq(5)
+      array_collection(21, 1, 8).size.should eq(8)
+      array_collection(21, 3, 8).size.should eq(5)
     end
   end
 
@@ -36,11 +36,11 @@ describe Pager::ArrayCollection do
 
   describe "#any?" do
     it do
-      array_collection(21).any?.should be_true
+      array_collection(21).any?.should be_true # ameba:disable Performance/AnyInsteadOfEmpty
     end
 
     it do
-      described_class.new([] of Int32, 0, 8).any?.should be_false
+      described_class.new([] of Int32, 1, 8).any?.should be_false # ameba:disable Performance/AnyInsteadOfEmpty
     end
   end
 
@@ -52,21 +52,21 @@ describe Pager::ArrayCollection do
 
   describe "#last?" do
     it do
-      array_collection(21, 1).last?.should be_false
+      array_collection(21, 2).last?.should be_false
     end
 
     it do
-      array_collection(21, 2).last?.should be_true
+      array_collection(21, 3).last?.should be_true
     end
   end
 
   describe "#first?" do
     it do
-      array_collection(21, 1).first?.should be_false
+      array_collection(21, 2).first?.should be_false
     end
 
     it do
-      array_collection(21, 0).first?.should be_true
+      array_collection(21, 1).first?.should be_true
     end
   end
 end

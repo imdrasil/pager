@@ -4,13 +4,13 @@ module Pager
 
     def initialize(array : Array(T), current_page, per_page)
       super(current_page, per_page, array.size)
-      end_index = Math.min((current_page + 1) * per_page, array.size)
-      start_index = Math.max(current_page * per_page, 0)
+      end_index = Math.min(@current_page * per_page, array.size)
+      start_index = Math.max((@current_page - 1) * per_page, 0)
       @collection = array[start_index...end_index]
     end
 
     def self.empty(per_page = Pager.per_page)
-      new([] of T, 0, per_page)
+      new([] of T, 1, per_page)
     end
   end
 end
