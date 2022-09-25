@@ -109,7 +109,7 @@ pager:
   next_label: "Next &rsaquo;"
 ```
 
-For the translation purpose `TechMagister/i18n.cr` library is used.
+For the translation purpose `crimson-knight/i18n.cr` library is used.
 
 ## Development
 

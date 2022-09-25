@@ -7,7 +7,7 @@ require "./pager/presenters/bootstrap"
 require "./pager/view_helper"
 
 module Pager
-  VERSION = "0.1.0"
+  VERSION = "0.2.0"
 
   class_property default_presenter : Pager::Presenter.class = Bootstrap,
     link_builder : Pager::LinkBuilder.class = Pager::LinkBuilder,
